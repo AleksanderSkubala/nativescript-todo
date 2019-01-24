@@ -1,5 +1,5 @@
 <template>
-    <Label text="List!" />
+    <Label>{{data}}</Label>
 </template>
 
 <script>
@@ -8,8 +8,13 @@
     export default {
         name: "List",
         data() {
-            return {};
-        }
+            return {
+                data: {},
+            };
+        },
+        mounted:function() {
+            this.data = getData();
+        },
     };
 </script>
 

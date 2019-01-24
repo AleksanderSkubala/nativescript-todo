@@ -12,19 +12,20 @@
             <TextView class="multiline-input" v-model="description" hint="Wprowadź opis" v-if="descriptionEnabled"/>
             <StackLayout id="time-picker">
                 <Label>Podaj termin ukończenia zadania: </Label>
-                <TimePicker class="time-input" v-model="currentTime"/>
+                <DatePicker v-model="execDate" />
             </StackLayout>
             <StackLayout>
                 <Label>Podaj jak ważne jest to zadanie: </Label>
-                <Slider v-model="importantLVL" maxValue="50"/>
+                <Slider class="silder-input" v-model="importantLVL"/>
             </StackLayout>
-            <Button class="btn" text="Dodaj zadanie" />
+            <Button class="btn" @tap="prepareData" text="Dodaj zadanie" />
         </StackLayout>
     </ScrollView>
 </template>
 
 <script>
     import Vue from "nativescript-vue";
+    import {getString, setString} from 'tns-core-modules/application-settings'
 
     export default {
         name: "Add",
@@ -33,6 +34,7 @@
                 name: '',
                 descriptionEnabled: false,
                 description: '',
+                execDate: new Date(),
                 execTime: new Date(),
                 exectHour: '',
                 exectMinute: '',
@@ -42,7 +44,35 @@
         },
         methods: {
             prepareData() {
-                this.data
+                var can = true;
+                //const oldData = JSON.parse(getString('todos', ''));
+                //const newData = {};
+
+                const todos = {
+                    'todo': []
+                };
+                setString('todos', JSON.stringify(todos));
+
+                if(this.name === '') can = false;
+                if(this.description === '' && this.descriptionEnabled === true) can = false;
+                if(this.execDate === '') can = false;
+                if(this.importantLVL === '' && this.importantLVL === 0) can = false;
+
+                var des = '';
+                if(this.descriptionEnabled === true) des = this.description;
+
+                if (can) {
+                    this.data = {
+                        'name': this.name,
+                        'description': des,
+                        'execDate': this.execDate,
+                        'importantLVL': this.importantLVL
+                    };
+
+                    //newData = oldData.push(this.data);
+                    //setString('todos', JSON.stringify(this.data));
+                    // $emit('changeStage');
+                }
             },
         },
     };
@@ -64,7 +94,7 @@
     }
 
     StackLayout {
-        margin: 15;
+        margin: 10;
     }
 
     Label {
@@ -91,6 +121,11 @@
     .time-input {
         padding: 0 !important;
         margin: 0 !important;
+    }
+
+    .slider-input {
+        color: #4484ce;
+        width: 100px;
     }
 
     .btn{

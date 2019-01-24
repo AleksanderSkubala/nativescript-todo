@@ -18,7 +18,7 @@
                 </StackLayout>
                 <StackLayout ~mainContent id="main">
                     <Home @start="stage=2" v-if="stage === 1"></Home>
-                    <Add v-if="stage === 2"></Add>
+                    <Add @changeStage="changeStage(3)" v-if="stage === 2"></Add>
                     <List v-if="stage === 3"></List>
                 </StackLayout>
             </RadSideDrawer>
