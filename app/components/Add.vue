@@ -45,13 +45,14 @@
         methods: {
             prepareData() {
                 var can = true;
-                //const oldData = JSON.parse(getString('todos', ''));
-                //const newData = {};
+                const appData = JSON.parse(getString('todos', ''));
 
-                const todos = {
-                    'todo': []
-                };
-                setString('todos', JSON.stringify(todos));
+                if(appData === '') {
+                    const todos = {
+                        'todo': []
+                    };
+                    setString('todos', JSON.stringify(todos));
+                }
 
                 if(this.name === '') can = false;
                 if(this.description === '' && this.descriptionEnabled === true) can = false;
@@ -69,9 +70,17 @@
                         'importantLVL': this.importantLVL
                     };
 
-                    //newData = oldData.push(this.data);
-                    //setString('todos', JSON.stringify(this.data));
-                    // $emit('changeStage');
+                    appData.todo.push(this.data); //creating new Data
+                    setString('todos', JSON.stringify(appData));
+                    this.$emit('changeStage');
+
+
+                } else {
+                     alert({
+                        title: "Brak danych",
+                        message: "Masz za mało danych",
+                        okButtonText: "OK"
+                    });
                 }
             },
         },
