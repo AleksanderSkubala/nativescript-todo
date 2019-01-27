@@ -24,7 +24,7 @@
 <style lang="scss">
 
 #container {
-    font-family: Karla-Regular, Karla-Bold, Karla-Italic, Karla-BoldItalic;
+    //font-family: Karla-Regular, Karla-Bold, Karla-Italic, Karla-BoldItalic;
     text-align: center;
 
     * {
@@ -34,7 +34,7 @@
 
 #header {
     font-size: 40;
-    font-family: Karla-Regular;
+    //font-family: Karla-Regular;
     padding: 15;
 }
 
@@ -46,7 +46,8 @@
 
 .scream {
     font-size: 40;
-    font-family: Karla-BoldItalic;
+    //font-family: Karla-BoldItalic;
+    font-weight: bold;
     padding: 20;
     color: #4484ce;
 }
@@ -54,7 +55,8 @@
 .btn{
     background-color: #4484ce;
     color: white;
-    font-family: Karla-Bold;
+    //font-family: Karla-Bold;
+    font-weight: bold;
 }
 
 </style>

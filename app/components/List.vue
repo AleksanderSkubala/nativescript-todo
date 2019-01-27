@@ -73,7 +73,8 @@
 <style scoped lang="scss">
 
     .h1 {
-        font-family: Karla-Bold;
+        //font-family: Karla-Bold;
+        font-weight: bold;
         font-size: 30;
         color: #4484ce;
         padding: 15 20 5 20;
@@ -92,13 +93,13 @@
     .btn{
         background-color: #4484ce;
         color: white;
-        font-family: Karla-Bold;
+        //font-family: Karla-Bold;
+        font-weight: bold;
     }
 
     .btn-done{
         background-color: #4484ce;
         color: white;
-        font-family: Karla-Bold;
         align-items: center;
 
         border-radius: 50%;

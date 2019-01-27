@@ -80,7 +80,7 @@
 <style scoped lang="scss">
 
     .page {
-        font-family: Karla-Regular, Karla-Bold, Karla-Italic, Karla-BoldItalic;
+        //font-family: Karla-Regular, Karla-Bold, Karla-Italic, Karla-BoldItalic;
     }
 
     ActionBar {
@@ -90,7 +90,8 @@
 
     .barHeader {
         font-size: 25;
-        font-family: Karla-Bold;
+        //font-family: Karla-Bold;
+        font-weight: bold;
         margin-left: 10;
     }
 

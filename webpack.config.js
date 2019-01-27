@@ -173,7 +173,7 @@ module.exports = env => {
                     use: [
                         'nativescript-dev-webpack/style-hot-loader',
                         'nativescript-dev-webpack/apply-css-loader.js',
-                        { loader: "css-loader", options: { minimize: false, url: false } },
+                        { loader: "css-loader", options: { minimize: false, url: true } },
                     ],
                 },
                 {
@@ -181,7 +181,7 @@ module.exports = env => {
                     use: [
                         'nativescript-dev-webpack/style-hot-loader',
                         'nativescript-dev-webpack/apply-css-loader.js',
-                        { loader: "css-loader", options: { minimize: false, url: false } },
+                        { loader: "css-loader", options: { minimize: false, url: true } },
                         "sass-loader",
                     ],
                 },
@@ -196,6 +196,7 @@ module.exports = env => {
                         compiler: NsVueTemplateCompiler,
                     },
                 },
+
             ],
         },
         plugins: [
@@ -235,6 +236,14 @@ module.exports = env => {
             }),
             // Does IPC communication with the {N} CLI to notify events when running in watch mode.
             new nsWebpack.WatchStateLoggerPlugin(),
+            new webpack.LoaderOptionsPlugin({
+                // test: /\.xxx$/, // may apply this only for some modules
+                options: {
+                  loaders: [
+                    { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+                  ]
+                }
+              })
         ],
     };
 
